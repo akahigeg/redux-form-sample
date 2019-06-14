@@ -3,15 +3,16 @@ import * as ReduxForm from 'redux-form'
 
 // interface SimpleFormProps {
 //   name: string; // ?
-
 // }
 
-// interface SimpleFormData {
-//   firstName: string;
-//   lastName: string;
-// }
+interface SimpleFormData {
+  firstName: string;
+  lastName: string;
+}
 
-const SimpleForm = (props: any)  => {
+// const SimpleForm = (props: ReduxForm.InjectedFormProps<SimpleFormData>)  => { こう言う例が見られるけど動かない・・・
+// って思ったらclassを使った時の書き方か https://stackoverflow.com/questions/48379435/redux-form-props-typescript/48432189
+const SimpleForm = (props: ReduxForm.InjectedFormProps & SimpleFormData)  => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
@@ -50,5 +51,5 @@ const SimpleForm = (props: any)  => {
 }
 
 export default ReduxForm.reduxForm({
-  form: 'simple' // a unique identifier for this form
+  form: 'simple'
 })(SimpleForm)
