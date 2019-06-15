@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import SimpleFormContainer from './containers/SimpleFormContainer';
+import SyncValidationFormContainer from './containers/SyncValidationFormContainer';
 
 import logo from './logo.svg';
 
@@ -13,6 +14,7 @@ class App extends React.Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <SimpleFormContainer />
+        <SyncValidationFormContainer />
       </div>
     );
   }

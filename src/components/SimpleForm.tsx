@@ -21,6 +21,7 @@ const SimpleForm: React.SFC<ReduxForm.InjectedFormProps> = (props)  => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
+      <h3>Simple Form</h3>
       <div>
         <label>First Name</label>
         <div>
