@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 import SimpleFormContainer from './containers/SimpleFormContainer';
 import SyncValidationFormContainer from './containers/SyncValidationFormContainer';
+import FieldLevelValidationFormContainer from './containers/FieldLevelValidationFormContainer';
 
 import logo from './logo.svg';
 
@@ -15,6 +16,7 @@ class App extends React.Component {
         </header>
         <SimpleFormContainer />
         <SyncValidationFormContainer />
+        <FieldLevelValidationFormContainer />
       </div>
     );
   }
