@@ -5,9 +5,9 @@ const required = (value: any) => (value || typeof value === 'number' ? undefined
 const maxLength = (max: number) => (value: string) =>
   value && value.length > max ? `Must be ${max} characters or less` : undefined
 const maxLength15 = maxLength(15)
-export const minLength = (min :number) => (value: string) =>
+const minLength = (min :number) => (value: string) =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined
-export const minLength2 = minLength(2)
+const minLength2 = minLength(2)
 const isNumber = (value: any) =>
   value && isNaN(Number(value)) ? 'Must be a number' : undefined
 const minValue = (min :number) => (value: number) =>
@@ -29,7 +29,7 @@ const alphaNumeric = (value: string) =>
   value && /[^a-zA-Z0-9 ]/i.test(value)
     ? 'Only alphanumeric characters'
     : undefined
-export const phoneNumber = (value: string) =>
+const phoneNumber = (value: string) =>
   value && !/^(0|[1-9][0-9]{9})$/i.test(value)
     ? 'Invalid phone number, must be 10 digits'
     : undefined
