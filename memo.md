@@ -23,18 +23,55 @@
 
 サーバーサイドバリデーション
 
-### ？
-onSubmitの時しかvaluesを取れないのかな？
+### Stateの初期化
+https://redux-form.com/8.2.2/examples/initializefromstate/
 
-Flow？TypeScript使うときは不要？
+reduxFormでReduxと繋いだフォームコンポーネントをさらにconnectに渡してstateを初期値を割り当てる
+
+### formValueSelector 
+https://redux-form.com/8.2.2/examples/selectingformvalues/
+
+    const selector = formValueSelector('selectingFormValues')
+    const value = selector(state, 'fieldName')
+
+mapStateToPropsの中でフォームの値を取得してフォームのレンダリング処理に使うことができる。
+
+selectした値を変更すると都度フォーム全体がリレンダリングされるのでパフォーマンスに注意。
+
+### Field Arrays
+https://redux-form.com/8.2.2/examples/fieldarrays/
+
+ToDoリストのToDoアイテムなど、一つのフォーム内で可変個数のリストアイテムを扱いたいときに便利な機能。Addを推すとフォームが増えてRemoveを推すと消えるなど。
+
+FieldArrayコンポーネントにフォームをレンダリングするコンポーネントを渡す。そのレンダーコンポーネントの中で insert, pop, push, remove, shift, swap, and unshift といったアクションが可能。
+
+    <FieldArray name="members" component={renderMembers} />
+
+renderMembersの中では
+
+    <button type="button" onClick={() => fields.push({})}>Add Member</button>
+
+    {fields.map((member, index) => (
+      <li key={index}>...</li>
+    ))}
+   
+ってかんじで。これは欲しかった機能なのでは。
+
+### Remote Submit
+ReduxForm外のコンポーネントやミドルウェアからReduxFormのSubmitを行う方法。
+
+### ？
+- onSubmitの時しかvaluesを取れないのかな？ => formValueSelectorでレンダリング時にstate to propsできる
+- Flow？TypeScript使うときは不要？ => 不要ぽ
+- 使うライブラリによってコードの書き方が変わるので、そうした違いに振り回されて混乱しないためにもReduxの基礎を掴んでいることが重要。
+- TypeScriptに直していくのつらみあるな。当てはめる型がわからん。 => とりあえずチュートリアルでは本質でないところなのでガンガンanyにしていくか
 
 サンプルが豊富なのはいいな。
 
 ImmutableJSとは
 
-使うライブラリによってコードの書き方が変わるので、そうした違いに振り回されて混乱しないためにもReduxの基礎を掴んでいることが重要。
 
-TypeScriptに直していくのつらみあるな。当てはめる型がわからん。 => とりあえずチュートリアルでは本質でないところなのでガンガンanyにしていくか。
+
 
 ### Formikとの比較雑感
 Reduxを使うならFormikよりRedux Formの方がいいのかな。よさげかも。Reduxを使ってないと使えないという欠点はある。
