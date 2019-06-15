@@ -5,20 +5,27 @@ import * as ReduxForm from 'redux-form'
 //   name: string; // ?
 // }
 
-interface SimpleFormData {
-  firstName: string;
-  lastName: string;
+// interface SimpleFormData {
+//   firstName: string;
+//   lastName: string;
+// }
+
+// 独自のPropsを取らないSFC
+const SimpleSFC: React.SFC = (props)  => {
+  return (<p>{props.children}</p>)
 }
 
 // const SimpleForm = (props: ReduxForm.InjectedFormProps<SimpleFormData>)  => { こう言う例が見られるけど動かない・・・
 // って思ったらclassを使った時の書き方か https://stackoverflow.com/questions/48379435/redux-form-props-typescript/48432189
-const SimpleForm = (props: ReduxForm.InjectedFormProps & SimpleFormData)  => {
+const SimpleForm: React.SFC<ReduxForm.InjectedFormProps> = (props)  => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label>First Name</label>
         <div>
+          <SimpleSFC>hey!</SimpleSFC>
+
           <ReduxForm.Field
             name="firstName"
             component="input"
