@@ -9,6 +9,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import SimpleFormContainer from "./containers/SimpleFormContainer";
 import SyncValidationFormContainer from "./containers/SyncValidationFormContainer";
 import FieldLevelValidationFormContainer from "./containers/FieldLevelValidationFormContainer";
+import App from "./App";
 
 const initialState = {
   form: {}
@@ -23,7 +24,7 @@ store.subscribe(() => {
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <>
+      <App>
         <Switch>
           <Route path="/" exact={true} component={SimpleFormContainer} />
           <Route
@@ -37,7 +38,7 @@ ReactDOM.render(
           />
           <Redirect to="/" />
         </Switch>
-      </>
+      </App>
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root") as HTMLElement

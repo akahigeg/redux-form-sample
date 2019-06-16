@@ -75,6 +75,7 @@ Reactやってると芋づる式に学ぶことが増えてつらい。色々と
 ### Routing
 軽い気持ちでルーティング入れようとしたらReduxとの組み合わせには一工夫いるらしい。
 
+https://github.com/supasate/connected-react-router
 
 ### Formikとの比較雑感
 Reduxを使うならFormikよりRedux Formの方がいいのかな。よさげかも。Reduxを使ってないと使えないという欠点はある。
