@@ -49,44 +49,48 @@ const renderField = (props: any) => (
 const FieldLevelValidationForm = (props: any) => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="ui form">
       <h3>FieldLevelValidationForm</h3>
+      <div className="field">
+        <label>Username</label>
       <ReduxForm.Field
         name="username"
         type="text"
         component={renderField}
-        label="Username"
         validate={[required, maxLength15, minLength2]}
         warn={alphaNumeric}
-      />
+      /></div>
+      <div className="field">
+        <label>Email</label>
       <ReduxForm.Field
         name="email"
         type="email"
         component={renderField}
-        label="Email"
         validate={email}
         warn={aol}
-      />
+      /></div>
+      <div className="field">
+        <label>Age</label>
       <ReduxForm.Field
         name="age"
         type="number"
         component={renderField}
-        label="Age"
         validate={[required, isNumber, minValue13]}
         warn={tooYoung}
-      />
+      /></div>
+      <div className="field">
+        <label>Phone number</label>
       <ReduxForm.Field
         name="phone"
         type="number"
         component={renderField}
-        label="Phone number"
         validate={[required, phoneNumber]}
-      />
-      <div>
-        <button type="submit" disabled={submitting}>
+      /></div>
+      <div className="button-area">
+        <button type="submit" disabled={submitting} className="ui button">
           Submit
         </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
+        <button type="button" disabled={pristine || submitting} onClick={reset} className="ui button">
           Clear Values
         </button>
       </div>
