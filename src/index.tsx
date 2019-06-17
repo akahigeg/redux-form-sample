@@ -4,12 +4,14 @@ import { Provider } from "react-redux";
 import { Route, Switch, Redirect } from "react-router"; // react-router v4/v5
 import { ConnectedRouter } from "connected-react-router";
 import configureStore, { history } from "./configureStore";
-import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 import SimpleFormContainer from "./containers/SimpleFormContainer";
 import SyncValidationFormContainer from "./containers/SyncValidationFormContainer";
 import FieldLevelValidationFormContainer from "./containers/FieldLevelValidationFormContainer";
 import App from "./App";
+
+import "semantic-ui-css/semantic.min.css";
+import "./index.css";
 
 const initialState = {
   form: {}

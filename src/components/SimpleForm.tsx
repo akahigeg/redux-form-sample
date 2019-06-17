@@ -10,23 +10,16 @@ import * as ReduxForm from 'redux-form'
 //   lastName: string;
 // }
 
-// 独自のPropsを取らないSFC
-const SimpleSFC: React.SFC = (props)  => {
-  return (<p>{props.children}</p>)
-}
-
 // const SimpleForm = (props: ReduxForm.InjectedFormProps<SimpleFormData>)  => { こう言う例が見られるけど動かない・・・
 // って思ったらclassを使った時の書き方か https://stackoverflow.com/questions/48379435/redux-form-props-typescript/48432189
 const SimpleForm: React.SFC<ReduxForm.InjectedFormProps> = (props)  => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="ui form">
       <h3>Simple Form</h3>
-      <div>
+      <div className="field">
         <label>First Name</label>
         <div>
-          <SimpleSFC>hey!</SimpleSFC>
-
           <ReduxForm.Field
             name="firstName"
             component="input"
@@ -35,7 +28,7 @@ const SimpleForm: React.SFC<ReduxForm.InjectedFormProps> = (props)  => {
           />
         </div>
       </div>
-      <div>
+      <div className="field">
         <label>Last Name</label>
         <div>
           <ReduxForm.Field
@@ -46,11 +39,11 @@ const SimpleForm: React.SFC<ReduxForm.InjectedFormProps> = (props)  => {
           />
         </div>
       </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>
+      <div className="button-area">
+        <button type="submit" className="ui button" disabled={pristine || submitting}>
           Submit
         </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
+        <button type="button" className="ui button" disabled={pristine || submitting} onClick={reset}>
           Clear Values
         </button>
       </div>

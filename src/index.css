@@ -3,3 +3,21 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.content {
+  margin-top: 15px;
+  padding: 0px 10px;
+  text-align: left;
+}
+
+.button-area {
+  margin-top: 5px;
+  text-align: center;
+}
+
+footer {
+  margin-top: 15px;
+  padding: 10px;
+  border-top: 1px solid #999;
+  text-align: center;
+}

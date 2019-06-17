@@ -10,7 +10,9 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts-ts": "3.1.0",
-    "redux-form": "^8.2.4"
+    "redux-form": "^8.2.4",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.2"
   },
   "scripts": {
     "start": "react-scripts-ts start",
