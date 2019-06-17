@@ -1,24 +1,25 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
 import * as ReduxForm from 'redux-form'
 
 // interface SimpleFormProps {
 //   name: string; // ?
 // }
 
-// interface SimpleFormData {
-//   firstName: string;
-//   lastName: string;
-// }
+interface SimpleFormData {
+  firstName: string;
+  lastName: string;
+}
 
 // const SimpleForm = (props: ReduxForm.InjectedFormProps<SimpleFormData>)  => { こう言う例が見られるけど動かない・・・
 // って思ったらclassを使った時の書き方か https://stackoverflow.com/questions/48379435/redux-form-props-typescript/48432189
-const SimpleForm: React.SFC<ReduxForm.InjectedFormProps> = (props)  => {
+const SimpleForm: React.SFC<ReduxForm.InjectedFormProps> = (props: ReduxForm.InjectedFormProps & SimpleFormData)  => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit} className="ui form">
       <h3>Simple Form</h3>
       <div className="field">
-        <label>First Name</label>
+        <label>First Name {props.firstName}</label>
         <div>
           <ReduxForm.Field
             name="firstName"
@@ -29,7 +30,7 @@ const SimpleForm: React.SFC<ReduxForm.InjectedFormProps> = (props)  => {
         </div>
       </div>
       <div className="field">
-        <label>Last Name</label>
+        <label>Last Name {props.lastName}</label>
         <div>
           <ReduxForm.Field
             name="lastName"
@@ -51,6 +52,19 @@ const SimpleForm: React.SFC<ReduxForm.InjectedFormProps> = (props)  => {
   )
 }
 
-export default ReduxForm.reduxForm({
+const SimpleFormWithReduxForm = ReduxForm.reduxForm({
   form: 'simple'
 })(SimpleForm)
+
+const selector = ReduxForm.formValueSelector('simple')
+const SimpleFormWithSelector = connect(state => {
+  // can select values individually
+  const { firstName, lastName } = selector(state, 'firstName', 'lastName')
+  return {
+    firstName,
+    lastName,
+    fullName: `${firstName || ''} ${lastName || ''}`
+  }
+})(SimpleFormWithReduxForm)
+
+export default SimpleFormWithSelector;
