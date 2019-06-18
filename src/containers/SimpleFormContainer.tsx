@@ -11,5 +11,4 @@ class SimpleFormContainer extends React.Component {
   }
 }
 
-// 自分でconnectしなくていいみたい mapStateToPropsとmapDispatchToPropsしたければconnectを使ってもいいぽい
 export default SimpleFormContainer;
