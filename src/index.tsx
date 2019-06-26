@@ -5,7 +5,7 @@ import { Route, Switch, Redirect } from "react-router"; // react-router v4/v5
 import { ConnectedRouter } from "connected-react-router";
 import configureStore, { history } from "./configureStore";
 import registerServiceWorker from "./registerServiceWorker";
-import SimpleFormContainer from "./containers/SimpleFormContainer";
+import SimpleFormScreen from "./components/SimpleFormScreen";
 import SyncValidationFormContainer from "./containers/SyncValidationFormContainer";
 import FieldLevelValidationFormContainer from "./containers/FieldLevelValidationFormContainer";
 import App from "./App";
@@ -28,7 +28,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <App>
         <Switch>
-          <Route path="/" exact={true} component={SimpleFormContainer} />
+          <Route path="/" exact={true} component={SimpleFormScreen} />
           <Route
             path="/sync-validation/"
             exact={true}

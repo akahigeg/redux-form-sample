@@ -73,14 +73,26 @@ ImmutableJSとは
 
 Reactやってると芋づる式に学ぶことが増えてつらい。色々とやり方があるのも善し悪しだな。どれを選択したらいいのかという選択コストもまた高い。
 
-
-
 ### Routing
 軽い気持ちでルーティング入れようとしたらReduxとの組み合わせには一工夫いるらしい。
 
+以下を使えば簡単。
 https://github.com/supasate/connected-react-router
 
 ### Formikとの比較雑感
 Reduxを使うならFormikよりRedux Formの方がいいのかな。よさげかも。Reduxを使ってないと使えないという欠点はある。
 
 Formikより分かりやすいような。Formikの`{touched.lastName && errors.lastName && <div>{errors.lastName}`とか何者だお前感あるせいだろうか。 <= まだRedux Formのコード書いてない意見
+
+### コンポーネント構造
+- フォームのプレゼンコンポーネント components/SomeForm.tsx
+- フォームのコンテナコンポーネント containers/SomeFormContainer.tsx
+- フォーム画面のコンポーネント components/SomeFormScreen.tsx
+
+フォーム画面のコンポーネントにはフォーム意外にヘッダなどその他のコンポーネントが含まれる。
+
+- フォームのプレゼンコンポーネント components/ContactForm.tsx
+- フォームのコンテナコンポーネント containers/ContactFormContainer.tsx
+- フォームを含んだコンポーネント components/Information.tsx
+
+のようにフォームが主でない画面の場合もあるかもしれない。
